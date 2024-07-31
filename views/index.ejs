@@ -5,5 +5,16 @@
   </head>
   <body>
     <h1>Mini Message Board</h1>
+    <div class="messages">
+      <ul>
+        <% for (let i = 0; i < messages.length; i++) { %>
+          <li>
+            <h3> <%= messages[i].user %> </h3>
+            <i> <%= messages[i].added %> </i> 
+            <p> <%= messages[i].text %> </p>
+          </li>
+        <% } %>
+      </ul>
+    </div>
   </body>
 </html>
