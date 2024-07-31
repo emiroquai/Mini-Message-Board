@@ -41,7 +41,11 @@ app.post("/new", (req, res) => {
 
 app.get("/messages/:messageIndex", (req, res) => {
   messageIndex = parseInt(req.params.messageIndex);
-  res.render("messageDetail", { messageIndex: messageIndex, messages: messages, formatDistanceToNow: formatDistanceToNow })
+  if (!isNaN(messageIndex) && messageIndex >= 0 && messageIndex < messages.length) {
+    res.render("messageDetail", { messageIndex: messageIndex, messages: messages, formatDistanceToNow: formatDistanceToNow })    
+  } else {
+    res.status(404).send("Message not found");
+  }
 });
 
 const PORT = 3000;
