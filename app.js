@@ -25,11 +25,14 @@ const messages = [
 ];
 
 app.get("/", (req, res) => {
-  res.render("index", { messages: messages, formatDistanceToNow: formatDistanceToNow });
+  res.render("index", { 
+    messages: messages, 
+    formatDistanceToNow: formatDistanceToNow 
+  });
 });
 
 app.get("/new", (req, res) => {
-  res.render("form", { messages: messages})
+  res.render("form", { messages: messages});
 });
 
 app.post("/new", (req, res) => {
@@ -42,7 +45,11 @@ app.post("/new", (req, res) => {
 app.get("/messages/:messageIndex", (req, res) => {
   messageIndex = parseInt(req.params.messageIndex);
   if (!isNaN(messageIndex) && messageIndex >= 0 && messageIndex < messages.length) {
-    res.render("messageDetail", { messageIndex: messageIndex, messages: messages, formatDistanceToNow: formatDistanceToNow })    
+    res.render("messageDetail", { 
+      messageIndex: messageIndex, 
+      messages: messages, 
+      formatDistanceToNow: formatDistanceToNow 
+    });    
   } else {
     res.status(404).send("Message not found");
   }
