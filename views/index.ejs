@@ -12,6 +12,9 @@
             <h3> <%= messages[i].user %> </h3>
             <i> <%= messages[i].added %> </i> 
             <p> <%= messages[i].text %> </p>
+            <a href="messages/<%= i %>">
+              <span> Open </span>
+            </a>
           </li>
         <% } %>
       </ul>

@@ -38,5 +38,10 @@ app.post("/new", (req, res) => {
   res.redirect("/")
 });
 
+app.get("/messages/:messageIndex", (req, res) => {
+  messageIndex = parseInt(req.params.messageIndex);
+  res.render("messageDetail", { messageIndex: messageIndex, messages: messages})
+});
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Mini Message Board app - listening on port ${PORT}!`));
