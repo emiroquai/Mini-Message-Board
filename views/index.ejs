@@ -10,7 +10,7 @@
         <% for (let i = 0; i < messages.length; i++) { %>
           <li>
             <h3> <%= messages[i].user %> </h3>
-            <i> <%= messages[i].added %> </i> 
+            <i> <%= formatDistanceToNow(messages[messageIndex].added, { addSuffix: true }) %> </i> 
             <p> <%= messages[i].text %> </p>
             <a href="messages/<%= i %>">
               <span> Open </span>

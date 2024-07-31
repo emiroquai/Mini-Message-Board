@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const { formatDistanceToNow } = require("date-fns");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -24,7 +25,7 @@ const messages = [
 ];
 
 app.get("/", (req, res) => {
-  res.render("index", { messages: messages});
+  res.render("index", { messages: messages, formatDistanceToNow: formatDistanceToNow });
 });
 
 app.get("/new", (req, res) => {
@@ -40,7 +41,7 @@ app.post("/new", (req, res) => {
 
 app.get("/messages/:messageIndex", (req, res) => {
   messageIndex = parseInt(req.params.messageIndex);
-  res.render("messageDetail", { messageIndex: messageIndex, messages: messages})
+  res.render("messageDetail", { messageIndex: messageIndex, messages: messages, formatDistanceToNow: formatDistanceToNow })
 });
 
 const PORT = 3000;
