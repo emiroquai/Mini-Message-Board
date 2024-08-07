@@ -16,9 +16,9 @@ async function newMessageGet(req, res) {
 }
 
 async function newMessagePost(req, res) {
-  const messageText = req.body.messageText;
-  const messageUser = req.body.messageUser;
-  messages.push({ text: messageText, user: messageUser, added: new Date() });
+  const message = req.body;
+  console.log("Inserting message: ", message);
+  await db.insertMessage(message);
   res.redirect("/")
 
 }
