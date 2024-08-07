@@ -1,26 +1,10 @@
 const db = require("../db/queries");
 const { formatDistanceToNow } = require("date-fns");
 
-//Placeholder dummy messages
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];  
-
 async function getMessages(req, res) {
-  console.log("getting all messages from db -- wip");
   //Get messages from db
-  // const messages = await db.getAllMessages();
-
-  // console.log("Messages:", messages);
+  const messages = await db.getAllMessages();
+  console.log("Messages:", messages);
   res.render("index", { 
     messages: messages, 
     formatDistanceToNow: formatDistanceToNow 
